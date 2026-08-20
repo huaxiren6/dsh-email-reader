@@ -1,6 +1,6 @@
-{
+﻿{
   "name": "dsh-email-reader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "IMAP email reader for DeepSeek Harness: list, read, and search mail via imapflow; tools email_list / email_read / email_search.",
   "type": "module",
   "main": "src/index.js",
@@ -37,7 +37,7 @@
   },
   "peerDependencies": {
     "@deepseek-ai/cordis": "^4.0.1",
-    "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6"
+    "@deepseek-ai/dsh-tools": ">=0.0.1-rc.1 <0.1.0 || >=0.1.0-rc.1 <0.2.0-0"
   },
   "publishConfig": {
     "access": "public"
