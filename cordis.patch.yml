@@ -1,0 +1,10 @@
+- insert:
+    - id: email-reader
+      name: dsh-email-reader
+      config:
+        host: ""
+        port: 993
+        user: ""
+        pass: ""
+        tls: true
+        mailbox: INBOX
