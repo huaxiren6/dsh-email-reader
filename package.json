@@ -1,7 +1,7 @@
 {
   "name": "dsh-email-reader",
   "version": "0.1.2",
-  "description": "IMAP email reader for DeepSeek Harness: list, read, and search mail via imapflow; tools email_list / email_read / email_search.",
+  "description": "OAuth2-capable IMAP email reader for DeepSeek Harness: list/read/search mail for accounts where password auth is disabled (Outlook post-2024), with automatic token refresh, app-password Gmail via optional proxy, and ol_email_* tools that coexist with the market dsh-email plugin.",
   "type": "module",
   "main": "src/index.js",
   "exports": {
@@ -20,7 +20,12 @@
     "deepseek-harness",
     "dsh-plugin",
     "email",
-    "imap"
+    "imap",
+    "oauth2",
+    "xoauth2",
+    "outlook",
+    "gmail",
+    "otp"
   ],
   "author": "huaxiren6",
   "license": "MIT",
