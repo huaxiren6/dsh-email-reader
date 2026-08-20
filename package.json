@@ -1,0 +1,49 @@
+{
+  "name": "dsh-email-reader",
+  "version": "0.1.0",
+  "description": "IMAP email reader for DeepSeek Harness: list, read, and search mail via imapflow; tools email_list / email_read / email_search.",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "dsh-plugin",
+    "email",
+    "imap"
+  ],
+  "author": "huaxiren6",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huaxiren6/dsh-email-reader.git"
+  },
+  "homepage": "https://github.com/huaxiren6/dsh-email-reader#readme",
+  "engines": {
+    "node": ">=22.5"
+  },
+  "dependencies": {
+    "imapflow": "^1.7.1"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-tools": ">=0.1.0-rc.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
