@@ -264,7 +264,7 @@ export function apply(ctx, config) {
   }
 
   ctx.tools.register(defineTool({
-    name: 'email_list',
+    name: 'ol_email_list',
     description: `List recent messages in an IMAP mailbox (envelope + flags). Configured accounts: ${accountNames.join(', ') || 'none'}.`,
     parameters: {
       limit: { type: 'number', description: 'Max messages to list (default 20, max 100).' },
@@ -300,8 +300,8 @@ export function apply(ctx, config) {
         },
       },
       render(args, value) {
-        if (!value.ok) return [{ type: 'text', text: `email_list failed: ${value.error ?? 'unknown error'}` }]
-        const lines = [`email_list${value.account ? ` [${value.account}]` : ''}${value.mailbox ? ` (${value.mailbox})` : ''}: ${value.total} message(s)`]
+        if (!value.ok) return [{ type: 'text', text: `ol_email_list failed: ${value.error ?? 'unknown error'}` }]
+        const lines = [`ol_email_list${value.account ? ` [${value.account}]` : ''}${value.mailbox ? ` (${value.mailbox})` : ''}: ${value.total} message(s)`]
         for (const m of value.messages ?? []) {
           lines.push(`  #${m.seq}${m.uid != null ? ` (uid=${m.uid})` : ''} ${m.date ?? ''} — ${m.from} — ${m.subject}`)
         }
@@ -328,10 +328,10 @@ export function apply(ctx, config) {
   }))
 
   ctx.tools.register(defineTool({
-    name: 'email_read',
-    description: `Read a single email message in full (subject, from, date, text body) by sequence number or UID. Configured accounts: ${accountNames.join(', ') || 'none'}. Use email_list first to find the seq/uid.`,
+    name: 'ol_email_read',
+    description: `Read a single email message in full (subject, from, date, text body) by sequence number or UID. Configured accounts: ${accountNames.join(', ') || 'none'}. Use ol_email_list first to find the seq/uid.`,
     parameters: {
-      seq: { type: 'number', description: 'Message sequence number (from email_list).' },
+      seq: { type: 'number', description: 'Message sequence number (from ol_email_list).' },
       uid: { type: 'number', description: 'Alternative: message UID.' },
       account: { type: 'string', description: `Account id: ${accountNames.join(', ') || 'default'}.` },
       mailbox: { type: 'string', description: 'Mailbox/folder name (default account.mailbox or INBOX).' },
@@ -363,7 +363,7 @@ export function apply(ctx, config) {
         },
       },
       render(args, value) {
-        if (!value.ok) return [{ type: 'text', text: `email_read failed: ${value.error ?? 'unknown error'}` }]
+        if (!value.ok) return [{ type: 'text', text: `ol_email_read failed: ${value.error ?? 'unknown error'}` }]
         const m = value.message ?? {}
         const lines = [
           `subject: ${m.subject ?? ''}`,
@@ -409,7 +409,7 @@ export function apply(ctx, config) {
   }))
 
   ctx.tools.register(defineTool({
-    name: 'email_search',
+    name: 'ol_email_search',
     description: `Search messages in an IMAP mailbox by sender, subject, or body keyword. Returns newest first. Configured accounts: ${accountNames.join(', ') || 'none'}.`,
     parameters: {
       query: { type: 'string', required: true, description: 'Search term(s).' },
@@ -447,8 +447,8 @@ export function apply(ctx, config) {
         },
       },
       render(args, value) {
-        if (!value.ok) return [{ type: 'text', text: `email_search failed: ${value.error ?? 'unknown error'}` }]
-        const lines = [`email_search "${value.query}"${value.account ? ` [${value.account}]` : ''}${value.mailbox ? ` (${value.mailbox})` : ''}: ${value.total} hit(s)`]
+        if (!value.ok) return [{ type: 'text', text: `ol_email_search failed: ${value.error ?? 'unknown error'}` }]
+        const lines = [`ol_email_search "${value.query}"${value.account ? ` [${value.account}]` : ''}${value.mailbox ? ` (${value.mailbox})` : ''}: ${value.total} hit(s)`]
         for (const m of value.messages ?? []) {
           lines.push(`  #${m.seq}${m.uid != null ? ` (uid=${m.uid})` : ''} ${m.date ?? ''} — ${m.from} — ${m.subject}`)
         }
