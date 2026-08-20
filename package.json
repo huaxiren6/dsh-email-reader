@@ -1,6 +1,6 @@
-﻿{
+{
   "name": "dsh-email-reader",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "IMAP email reader for DeepSeek Harness: list, read, and search mail via imapflow; tools email_list / email_read / email_search.",
   "type": "module",
   "main": "src/index.js",
